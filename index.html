@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stir | Where creators run their business</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stir-purple': '#7352FF',
+                        'stir-purple-hover': '#5E3DFF',
+                        'stir-purple-light': '#F3F0FF',
+                        'stir-purple-dark': '#4D2EE6',
+                        'stir-dark': '#0E0E10',
+                        'stir-mint': '#00E599',
+                        'stir-mint-light': '#E6FBF3',
+                        'stir-yellow': '#FFD000',
+                        'stir-yellow-light': '#FFFBE6',
+                        'stir-turquoise': '#00D7D7',
+                        'stir-turquoise-light': '#E6FAFA',
+                        'stir-orange': '#FF6B00',
+                        'stir-orange-light': '#FFF0E6',
+                        'stir-gray-bg': '#F8F8FA',
+                        'stir-gray-border': '#EAEAEF',
+                        'stir-muted': '#6B7280',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.04)',
+                        'card-hover': '0 30px 60px -12px rgba(115, 82, 255, 0.12), 0 0 1px 1px rgba(115, 82, 255, 0.1)',
+                        'float': '0 25px 50px -12px rgba(0, 0, 0, 0.18)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection {
+            background-color: #7352FF;
+            color: #ffffff;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 35s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+        .strike-red {
+            position: relative;
+        }
+        .strike-red::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            right: -4px;
+            top: 50%;
+            height: 2px;
+            background-color: #EF4444;
+            transform: rotate(-4deg);
+        }
+    </style>
+</head>
+<body class="bg-white text-stir-dark antialiased selection:bg-stir-purple selection:text-white font-sans overflow-x-hidden">
+
+    <!-- ==================== 1. NAVBAR / HEADER ==================== -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-200">
+        <div class="max-w-[1280px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Left: Stir Logo -->
+            <a href="#" class="flex items-center gap-2 group" aria-label="Stir Home">
+                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/6097ad4b15e2220a65060ae7_logo_stir_purple.svg" 
+                     alt="Stir Logo" 
+                     class="h-7 w-auto transition-transform group-hover:scale-105">
+            </a>
+
+            <!-- Center: Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-gray-700">
+                <a href="#home" class="hover:text-stir-purple transition-colors">Managers</a>
+                <a href="#splits" class="hover:text-stir-purple transition-colors">About</a>
+                <a href="#drops" class="hover:text-stir-purple transition-colors">Blog</a>
+                <a href="#positions" class="flex items-center gap-1.5 hover:text-stir-purple transition-colors">
+                    <span>Join us</span>
+                    <span class="bg-stir-purple-light text-stir-purple text-[11px] font-semibold px-2 py-0.5 rounded-full">We're hiring</span>
+                </a>
+            </nav>
+
+            <!-- Right: Action Buttons -->
+            <div class="flex items-center gap-4">
+                <a href="#signin" 
+                   class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold bg-gray-100 hover:bg-stir-purple hover:text-white text-gray-900 transition-all duration-200">
+                    Sign In
+                </a>
+                <a href="#get-started" 
+                   class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-semibold bg-stir-purple hover:bg-stir-purple-hover text-white shadow-md hover:shadow-lg transition-all duration-200">
+                    Get Started
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-700 hover:text-stir-purple focus:outline-none" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden px-6 pt-2 pb-6 bg-white border-b border-gray-100 space-y-3">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-stir-purple font-medium">Managers</a>
+            <a href="#splits" class="block py-2 text-gray-700 hover:text-stir-purple font-medium">About</a>
+            <a href="#drops" class="block py-2 text-gray-700 hover:text-stir-purple font-medium">Blog</a>
+            <a href="#positions" class="block py-2 text-gray-700 hover:text-stir-purple font-medium">Join us</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="#signin" class="w-full text-center py-2.5 rounded-full bg-gray-100 text-gray-800 font-semibold text-sm">Sign In</a>
+                <a href="#get-started" class="w-full text-center py-2.5 rounded-full bg-stir-purple text-white font-semibold text-sm">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ==================== 2. HERO SECTION ==================== -->
+        <section class="pt-16 pb-12 md:pt-24 md:pb-20 overflow-hidden bg-white">
+            <div class="max-w-[1280px] mx-auto px-6 text-center">
+                <!-- Large Headline -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-[80px] font-extrabold tracking-tight text-gray-950 leading-[1.08] max-w-4xl mx-auto">
+                    Where creators run <br class="hidden sm:inline">their business.
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">
+                    Meet Stir. The financial studio for collaborating, splitting revenue, money management and metrics—all in one place.
+                </p>
+
+                <!-- Interactive Email Signup Form -->
+                <div id="get-started" class="mt-10 max-w-md mx-auto">
+                    <form class="flex flex-col sm:flex-row items-center gap-3 p-1.5 bg-white border border-gray-200 rounded-full shadow-lg hover:border-stir-purple/60 focus-within:border-stir-purple focus-within:ring-4 focus-within:ring-stir-purple/10 transition-all">
+                        <input type="email" 
+                               placeholder="Enter your email" 
+                               required
+                               class="w-full px-5 py-3 text-sm text-gray-800 bg-transparent rounded-full focus:outline-none placeholder-gray-400">
+                        <button type="submit" 
+                                class="w-full sm:w-auto px-7 py-3 text-sm font-semibold text-white bg-stir-purple hover:bg-stir-purple-hover rounded-full transition-all duration-200 whitespace-nowrap shadow-md">
+                            Get Started
+                        </button>
+                    </form>
+                    <p class="mt-2.5 text-xs text-gray-400">Join thousands of top creators and collaborative teams.</p>
+                </div>
+            </div>
+
+            <!-- Creator Marquee Stream (Hero Grid) -->
+            <div class="mt-16 md:mt-20 overflow-hidden relative">
+                <!-- Gradient Edge Masks -->
+                <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+                <div class="animate-marquee gap-6 flex items-center">
+                    <!-- Creator Card 1: LaurDIY -->
+                    <div class="w-[280px] flex-shrink-0 bg-stir-gray-bg rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative h-[280px] w-full overflow-hidden bg-gray-200">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609e8d371abb606e6848519c_laurDIY.png" 
+                                 alt="LaurDIY" 
+                                 class="w-full h-full object-cover">
+                            <!-- Name Badge -->
+                            <div class="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm">
+                                <span class="font-bold text-xs text-gray-900">LaurDIY</span>
+                                <span class="text-[11px] font-medium text-stir-purple">Creator</span>
+                            </div>
+                            <!-- Social Icons -->
+                            <div class="absolute bottom-4 right-4 flex items-center gap-2">
+                                <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm">
+                                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467bf0057027512af42d1_logo_youtube.svg" class="w-4 h-4" alt="YouTube">
+                                </span>
+                                <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm">
+                                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7dbfa99944d205b34_logo_instagram.svg" class="w-4 h-4" alt="Instagram">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creator Card 2: Airrack -->
+                    <div class="w-[280px] flex-shrink-0 bg-stir-gray-bg rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative h-[280px] w-full overflow-hidden bg-gray-200">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/6099df710695170866b1523d_airrack.jpeg" 
+                                 alt="Airrack" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm">
+                                <span class="font-bold text-xs text-gray-900">Airrack</span>
+                                <span class="text-[11px] font-medium text-stir-purple">YouTuber</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 flex items-center gap-2">
+                                <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm">
+                                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467bf0057027512af42d1_logo_youtube.svg" class="w-4 h-4" alt="YouTube">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creator Card 3: Liza Koshy -->
+                    <div class="w-[280px] flex-shrink-0 bg-stir-gray-bg rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative h-[280px] w-full overflow-hidden bg-gray-200">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/6099ded41585d20f1fa93b04_liza%20koshy.jpeg" 
+                                 alt="Liza Koshy" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm">
+                                <span class="font-bold text-xs text-gray-900">Liza Koshy</span>
+                                <span class="text-[11px] font-medium text-stir-purple">Creator</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 flex items-center gap-2">
+                                <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm">
+                                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7dbfa99944d205b34_logo_instagram.svg" class="w-4 h-4" alt="Instagram">
+                                </span>
+                                <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm">
+                                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467bf0057027512af42d1_logo_youtube.svg" class="w-4 h-4" alt="YouTube">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creator Card 4: Peter Hollens -->
+                    <div class="w-[280px] flex-shrink-0 bg-stir-gray-bg rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative h-[280px] w-full overflow-hidden bg-gray-200">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/6099dd94dd491479b9a7d781_peter-hollens.jpeg" 
+                                 alt="Peter Hollens" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm">
+                                <span class="font-bold text-xs text-gray-900">Peter Hollens</span>
+                                <span class="text-[11px] font-medium text-stir-purple">Musician</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 flex items-center gap-2">
+                                <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm">
+                                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467bf0057027512af42d1_logo_youtube.svg" class="w-4 h-4" alt="YouTube">
+                                </span>
+                                <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm">
+                                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7c8e9e492e3fc2284_logo_shopify.svg" class="w-4 h-4" alt="Shopify">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creator Card 5: Laura Santos -->
+                    <div class="w-[280px] flex-shrink-0 bg-stir-gray-bg rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative h-[280px] w-full overflow-hidden bg-gray-200">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60945ba55138b482e1ad09a2_latura-santos_creator.jpg" 
+                                 alt="Laura Santos" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm">
+                                <span class="font-bold text-xs text-gray-900">Laura Santos</span>
+                                <span class="text-[11px] font-medium text-stir-purple">Creator</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 flex items-center gap-2">
+                                <span class="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm">
+                                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7dbfa99944d205b34_logo_instagram.svg" class="w-4 h-4" alt="Instagram">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate for infinite loop marquee -->
+                    <div class="w-[280px] flex-shrink-0 bg-stir-gray-bg rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                        <div class="relative h-[280px] w-full overflow-hidden bg-gray-200">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609e8d371abb606e6848519c_laurDIY.png" alt="LaurDIY" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full">
+                                <span class="font-bold text-xs text-gray-900">LaurDIY</span>
+                                <span class="text-[11px] font-medium text-stir-purple">Creator</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-[280px] flex-shrink-0 bg-stir-gray-bg rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                        <div class="relative h-[280px] w-full overflow-hidden bg-gray-200">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/6099df710695170866b1523d_airrack.jpeg" alt="Airrack" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full">
+                                <span class="font-bold text-xs text-gray-900">Airrack</span>
+                                <span class="text-[11px] font-medium text-stir-purple">YouTuber</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 3. TRUSTED BY LEADERS ==================== -->
+        <section class="py-20 bg-stir-gray-bg border-y border-gray-100">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+                        Trusted by leaders of the creative community
+                    </h2>
+                </div>
+
+                <!-- 4 Leader Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Leader 1: Rhett & Link (Mythical) -->
+                    <div class="group relative bg-white p-7 rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-[340px]">
+                        <div>
+                            <span class="inline-block bg-stir-purple-light text-stir-purple text-xs font-bold px-3 py-1 rounded-full mb-4">
+                                Creators
+                            </span>
+                            <h3 class="text-xl font-extrabold text-gray-900 group-hover:text-stir-purple transition-colors leading-snug">
+                                Rhett McLaughlin & Link Neal
+                            </h3>
+                        </div>
+                        <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60945ba55138b4f62dad0981_logo_mythical.svg" 
+                                 alt="Mythical Entertainment" 
+                                 class="h-8 max-w-[140px] object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="text-xs font-semibold text-gray-400 group-hover:text-stir-purple transition-colors">Mythical &rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- Leader 2: Casey Neistat -->
+                    <div class="group relative bg-white p-7 rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-[340px]">
+                        <div>
+                            <span class="inline-block bg-stir-purple-light text-stir-purple text-xs font-bold px-3 py-1 rounded-full mb-4">
+                                Creator
+                            </span>
+                            <h3 class="text-xl font-extrabold text-gray-900 group-hover:text-stir-purple transition-colors leading-snug">
+                                Casey Neistat
+                            </h3>
+                        </div>
+                        <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+                            <span class="font-black text-xl tracking-wider text-gray-800">CASEY</span>
+                            <span class="text-xs font-semibold text-gray-400 group-hover:text-stir-purple transition-colors">Investor &rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- Leader 3: Colin and Samir -->
+                    <div class="group relative bg-white p-7 rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-[340px]">
+                        <div>
+                            <span class="inline-block bg-stir-purple-light text-stir-purple text-xs font-bold px-3 py-1 rounded-full mb-4">
+                                Creators
+                            </span>
+                            <h3 class="text-xl font-extrabold text-gray-900 group-hover:text-stir-purple transition-colors leading-snug">
+                                Colin and Samir
+                            </h3>
+                        </div>
+                        <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+                            <span class="font-bold text-sm text-gray-700 tracking-wide">The Colin and Samir Show</span>
+                            <span class="text-xs font-semibold text-gray-400 group-hover:text-stir-purple transition-colors">&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- Leader 4: Jack Conte -->
+                    <div class="group relative bg-white p-7 rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-[340px]">
+                        <div>
+                            <span class="inline-block bg-stir-purple-light text-stir-purple text-xs font-bold px-3 py-1 rounded-full mb-4">
+                                CEO of Patreon
+                            </span>
+                            <h3 class="text-xl font-extrabold text-gray-900 group-hover:text-stir-purple transition-colors leading-snug">
+                                Jack Conte
+                            </h3>
+                        </div>
+                        <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609b3371ef6136d513d5140c_Patreon.svg" 
+                                 alt="Patreon" 
+                                 class="h-6 max-w-[120px] object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="text-xs font-semibold text-gray-400 group-hover:text-stir-purple transition-colors">Patreon &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured In Press Strip -->
+                <div class="mt-16 pt-12 border-t border-gray-200/60 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Featured in</span>
+                    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-65 hover:opacity-100 transition-opacity">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60b0184bd95ae10e2c638238_logo_axios.svg" alt="Axios" class="h-5">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60b01828d76206b40c3ee494_logo_the-information.svg" alt="The Information" class="h-5">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60b018276329fd0aae06af43_logo_tubefilter.svg" alt="Tubefilter" class="h-5">
+                        <span class="text-sm font-black tracking-tight text-gray-800">The Wall Street Journal</span>
+                        <span class="text-sm font-bold tracking-tight text-gray-800">TechCrunch</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 4. MISSION STATEMENT ==================== -->
+        <section class="py-24 bg-white text-center">
+            <div class="max-w-[980px] mx-auto px-6">
+                <span class="inline-block bg-stir-purple-light text-stir-purple text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-6">
+                    Welcome to Stir
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tight leading-[1.25]">
+                    Our goal is to make every aspect of running your creator business simple so you can be creative and change the world.
+                </h2>
+            </div>
+        </section>
+
+        <!-- ==================== 5. SECTION 1: HOME (DASHBOARD) ==================== -->
+        <section id="home" class="py-20 bg-white">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <!-- Section Badge & Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="inline-flex items-center gap-2 bg-stir-purple-light text-stir-purple text-xs font-bold px-3.5 py-1.5 rounded-full mb-3">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609460113f2c34248e5686f1_badge_home.svg" alt="" class="w-3.5 h-3.5">
+                        <span>Home</span>
+                    </div>
+                    <div class="text-stir-purple text-sm font-bold uppercase tracking-wider mb-2">Your entire business at a glance</div>
+                    <h3 class="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight">
+                        Stay organized. Without any extra work.
+                    </h3>
+
+                    <!-- Strike-through comparison pills -->
+                    <div class="flex items-center justify-center gap-6 sm:gap-10 mt-8 text-base sm:text-lg font-bold text-gray-400">
+                        <span class="strike-red text-gray-500">Spreadsheets</span>
+                        <span class="strike-red text-gray-500">Notes App</span>
+                        <span class="strike-red text-gray-500">Quickbooks</span>
+                    </div>
+                </div>
+
+                <!-- Central Dashboard Card UI Mockup -->
+                <div class="bg-stir-gray-bg border border-gray-200 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                    <!-- Window Top Controls -->
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-200/80 mb-8">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                            <span class="ml-4 text-xs font-semibold text-gray-400">dashboard.usestir.com</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-medium text-gray-600 bg-white border border-gray-200 px-3 py-1 rounded-full shadow-sm flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                Live Sync
+                            </span>
+                            <span class="text-xs font-bold text-gray-800 bg-white border border-gray-200 px-3 py-1 rounded-full shadow-sm">
+                                Suzie Kaye &darr;
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Body Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- Left 8 Columns: Revenue Summary & Analytics -->
+                        <div class="lg:col-span-8 space-y-6">
+                            <!-- Greeting & Metric Card -->
+                            <div class="bg-white p-7 rounded-2xl border border-gray-200/80 shadow-sm">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                                    <div>
+                                        <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Good morning, Suzie.</p>
+                                        <h4 class="text-sm font-semibold text-gray-700 mt-1">Your business revenue</h4>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">This year &darr;</span>
+                                        <button class="text-xs font-semibold text-white bg-stir-purple hover:bg-stir-purple-hover px-4 py-1.5 rounded-full transition-colors shadow-sm">
+                                            New payment
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap items-baseline gap-3 mb-6">
+                                    <span class="text-4xl sm:text-5xl font-black text-gray-950 tracking-tight">$135,405.60</span>
+                                    <span class="text-sm font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full">
+                                        &uarr; $12,221.79 (12.0%) in the last month
+                                    </span>
+                                </div>
+
+                                <!-- SVG Revenue Chart -->
+                                <div class="w-full pt-4">
+                                    <div class="h-44 w-full flex items-end gap-2 sm:gap-4 justify-between border-b border-gray-100 pb-2">
+                                        <!-- Bars for 12 months -->
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/20 group-hover:bg-stir-purple rounded-t transition-all" style="height: 35%"></div><span class="text-[10px] text-gray-400">Jan</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/30 group-hover:bg-stir-purple rounded-t transition-all" style="height: 48%"></div><span class="text-[10px] text-gray-400">Feb</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/25 group-hover:bg-stir-purple rounded-t transition-all" style="height: 40%"></div><span class="text-[10px] text-gray-400">Mar</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/40 group-hover:bg-stir-purple rounded-t transition-all" style="height: 60%"></div><span class="text-[10px] text-gray-400">Apr</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/50 group-hover:bg-stir-purple rounded-t transition-all" style="height: 72%"></div><span class="text-[10px] text-gray-400">May</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/65 group-hover:bg-stir-purple rounded-t transition-all" style="height: 85%"></div><span class="text-[10px] text-gray-400">Jun</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/60 group-hover:bg-stir-purple rounded-t transition-all" style="height: 78%"></div><span class="text-[10px] text-gray-400">Jul</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/75 group-hover:bg-stir-purple rounded-t transition-all" style="height: 92%"></div><span class="text-[10px] text-gray-400">Aug</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/80 group-hover:bg-stir-purple rounded-t transition-all" style="height: 88%"></div><span class="text-[10px] text-gray-400">Sep</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple rounded-t shadow-md" style="height: 100%"></div><span class="text-[10px] font-bold text-stir-purple">Oct</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/40 group-hover:bg-stir-purple rounded-t transition-all" style="height: 65%"></div><span class="text-[10px] text-gray-400">Nov</span></div>
+                                        <div class="flex-1 flex flex-col items-center gap-2 group"><div class="w-full bg-stir-purple/50 group-hover:bg-stir-purple rounded-t transition-all" style="height: 70%"></div><span class="text-[10px] text-gray-400">Dec</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Channel Breakdown -->
+                            <div class="bg-white p-7 rounded-2xl border border-gray-200/80 shadow-sm">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h5 class="font-bold text-gray-900 text-sm">Channel Breakdown</h5>
+                                    <a href="#" class="text-xs font-semibold text-stir-purple hover:underline">View all channels</a>
+                                </div>
+                                <div class="divide-y divide-gray-100">
+                                    <div class="py-3 flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <span class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-500 font-bold text-xs">P</span>
+                                            <div>
+                                                <p class="text-sm font-bold text-gray-900">Sam’s Bakehouse</p>
+                                                <p class="text-xs text-gray-400">Patreon</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm font-bold text-gray-900">$8,654.10</p>
+                                            <p class="text-xs text-emerald-600 font-semibold">+14.2%</p>
+                                        </div>
+                                    </div>
+                                    <div class="py-3 flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <span class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 font-bold text-xs">T</span>
+                                            <div>
+                                                <p class="text-sm font-bold text-gray-900">Bake Off Jam - October</p>
+                                                <p class="text-xs text-gray-400">Twitch</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm font-bold text-gray-900">$3,882.03</p>
+                                            <p class="text-xs text-emerald-600 font-semibold">+8.5%</p>
+                                        </div>
+                                    </div>
+                                    <div class="py-3 flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <span class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600 font-bold text-xs">Y</span>
+                                            <div>
+                                                <p class="text-sm font-bold text-gray-900">October - Ep 234</p>
+                                                <p class="text-xs text-gray-400">YouTube</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm font-bold text-gray-900">$1,345.00</p>
+                                            <p class="text-xs text-gray-500 font-semibold">2,199 views</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right 4 Columns: Bank Balance & Top Performers -->
+                        <div class="lg:col-span-4 space-y-6">
+                            <!-- In The Bank Card -->
+                            <div class="bg-white p-7 rounded-2xl border border-gray-200/80 shadow-sm space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-gray-400">In the bank</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                </div>
+                                <div class="text-3xl font-black text-gray-950">$2,310.00</div>
+                                <button class="w-full py-2.5 px-4 bg-gray-900 hover:bg-black text-white text-xs font-bold rounded-xl transition-colors shadow">
+                                    Transfer to bank
+                                </button>
+                                <div class="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                                    <span>Upcoming payout</span>
+                                    <span class="font-bold text-gray-900">$812.10</span>
+                                </div>
+                            </div>
+
+                            <!-- Top Performers Card -->
+                            <div class="bg-white p-7 rounded-2xl border border-gray-200/80 shadow-sm space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <h5 class="font-bold text-gray-900 text-sm">Top Performers</h5>
+                                    <span class="text-xs text-gray-400">All time</span>
+                                </div>
+                                <div class="space-y-3.5">
+                                    <div class="p-3 bg-stir-gray-bg rounded-xl">
+                                        <p class="text-xs font-bold text-gray-900 line-clamp-1">All About Baking - December Edition</p>
+                                        <div class="flex items-center justify-between mt-1 text-xs text-gray-500">
+                                            <span>YouTube • 21,199 views</span>
+                                            <span class="font-bold text-gray-900">$12,345.21</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-3 bg-stir-gray-bg rounded-xl">
+                                        <p class="text-xs font-bold text-gray-900 line-clamp-1">Ep 194: Cheddar, Bacon, & Onion</p>
+                                        <div class="flex items-center justify-between mt-1 text-xs text-gray-500">
+                                            <span>Preheated Podcast</span>
+                                            <span class="font-bold text-gray-900">$10,892.34</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-3 bg-stir-gray-bg rounded-xl">
+                                        <p class="text-xs font-bold text-gray-900 line-clamp-1">How to Get Better at Cooking</p>
+                                        <div class="flex items-center justify-between mt-1 text-xs text-gray-500">
+                                            <span>Spotify • 4,456 plays</span>
+                                            <span class="font-bold text-gray-900">$5,893.21</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Works with all the ways you make money -->
+                <div class="mt-16 text-center">
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-8">Works with all the ways you make money</h4>
+                    <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+                        <div class="flex items-center gap-2 bg-stir-gray-bg px-4 py-2.5 rounded-xl border border-gray-200/70 shadow-sm hover:border-stir-purple transition-colors">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467bf0057027512af42d1_logo_youtube.svg" class="w-5 h-5" alt="">
+                            <span class="text-xs font-bold text-gray-800">YouTube</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stir-gray-bg px-4 py-2.5 rounded-xl border border-gray-200/70 shadow-sm hover:border-stir-purple transition-colors">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b8565285394eedaba1_logo_patreon.svg" class="w-5 h-5" alt="">
+                            <span class="text-xs font-bold text-gray-800">Patreon</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stir-gray-bg px-4 py-2.5 rounded-xl border border-gray-200/70 shadow-sm hover:border-stir-purple transition-colors">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7c8e9e492e3fc2284_logo_shopify.svg" class="w-5 h-5" alt="">
+                            <span class="text-xs font-bold text-gray-800">Shopify</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stir-gray-bg px-4 py-2.5 rounded-xl border border-gray-200/70 shadow-sm hover:border-stir-purple transition-colors">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7be87d048527c13ad_logo_twitch.svg" class="w-5 h-5" alt="">
+                            <span class="text-xs font-bold text-gray-800">Twitch</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stir-gray-bg px-4 py-2.5 rounded-xl border border-gray-200/70 shadow-sm hover:border-stir-purple transition-colors">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7d85d87bdb09e5110_logo_stripe.svg" class="w-5 h-5" alt="">
+                            <span class="text-xs font-bold text-gray-800">Stripe</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stir-gray-bg px-4 py-2.5 rounded-xl border border-gray-200/70 shadow-sm hover:border-stir-purple transition-colors">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7fa7717800c2471ed_logo_anchor.svg" class="w-5 h-5" alt="">
+                            <span class="text-xs font-bold text-gray-800">Anchor</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stir-gray-bg px-4 py-2.5 rounded-xl border border-gray-200/70 shadow-sm hover:border-stir-purple transition-colors">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b765ae7a23a615a5f0_logo_substack.svg" class="w-5 h-5" alt="">
+                            <span class="text-xs font-bold text-gray-800">Substack</span>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-xs font-semibold text-gray-400">Missing one you need? <a href="#contact" class="text-stir-purple hover:underline">We’ll add it.</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 6. SECTION 2: PAY ==================== -->
+        <section id="pay" class="py-24 bg-stir-gray-bg border-t border-gray-100">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <!-- Section Badge & Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="inline-flex items-center gap-2 bg-stir-mint-light text-emerald-700 text-xs font-bold px-3.5 py-1.5 rounded-full mb-3">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609b9eabe9965d7938060ead_pay-icon-black.svg" alt="" class="w-3.5 h-3.5">
+                        <span>Pay</span>
+                    </div>
+                    <div class="text-emerald-600 text-sm font-bold uppercase tracking-wider mb-2">Free. Instant. Professional.</div>
+                    <h3 class="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight">
+                        Payments built for creators.
+                    </h3>
+                </div>
+
+                <!-- 4 Feature Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Feature 1: Never pay a fee again -->
+                    <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3 mb-8">
+                            <h4 class="text-2xl font-extrabold text-gray-950">Never pay a fee again</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Send and receive for free. Keep the 2.9% and reinvest it back into your business.
+                            </p>
+                        </div>
+                        <!-- Receipt Mockup (from Figma asset f5a185e980ee2d5ac161911c86ddff8876829435) -->
+                        <div class="bg-stir-gray-bg p-6 rounded-2xl border border-gray-200 text-center max-w-sm mx-auto w-full">
+                            <div class="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full mb-3">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <h5 class="text-sm font-bold text-gray-900">We sent your payment</h5>
+                            <span class="inline-block mt-1 bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                                With $0 in fees
+                            </span>
+                            <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center text-xs">
+                                <span class="text-gray-500">Receipt to</span>
+                                <span class="font-bold text-gray-900">Kavita Liborio</span>
+                            </div>
+                            <div class="mt-2 flex justify-between items-center text-xs">
+                                <span class="text-gray-500">Amount</span>
+                                <span class="text-xl font-black text-gray-950">$250.00</span>
+                            </div>
+                            <p class="mt-3 text-xs italic text-gray-500 bg-white p-2 rounded border border-gray-100">
+                                “Amazing work on this edit!”
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: 1099s on Autopilot -->
+                    <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3 mb-8">
+                            <h4 class="text-2xl font-extrabold text-gray-950">Put your 1099’s on autopilot</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                We’ll automate your paperwork so tax time is simple, like it should be.
+                            </p>
+                        </div>
+                        <!-- Collaborators Mockup (from Figma asset f1c254fb4dac91d7d8222bb902db395250db1e4a) -->
+                        <div class="bg-stir-gray-bg p-6 rounded-2xl border border-gray-200 max-w-sm mx-auto w-full">
+                            <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+                                <div>
+                                    <h5 class="text-xs font-bold text-gray-900 uppercase">Payments Overview</h5>
+                                    <p class="text-[11px] text-gray-500">25 payments • $8,283.23 sent • $0 fees</p>
+                                </div>
+                                <span class="text-[10px] bg-stir-purple text-white font-bold px-2 py-0.5 rounded-full">1099 Ready</span>
+                            </div>
+                            <div class="divide-y divide-gray-200/60 mt-3 text-xs">
+                                <div class="py-2.5 flex items-center justify-between">
+                                    <span class="font-bold text-gray-800">Kushal Byatnal</span>
+                                    <span class="font-black text-gray-900">$4,242.00</span>
+                                </div>
+                                <div class="py-2.5 flex items-center justify-between">
+                                    <span class="font-bold text-gray-800">Jess Gimbel</span>
+                                    <span class="font-black text-gray-900">$1,000.25</span>
+                                </div>
+                                <div class="py-2.5 flex items-center justify-between">
+                                    <span class="font-bold text-gray-800">Tom Evans</span>
+                                    <span class="font-black text-gray-900">$834.15</span>
+                                </div>
+                                <div class="py-2.5 flex items-center justify-between">
+                                    <span class="font-bold text-gray-800">Hari Anbarasu</span>
+                                    <span class="font-black text-gray-900">$232.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3: Bank-to-Bank in Seconds -->
+                    <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3 mb-8">
+                            <h4 class="text-2xl font-extrabold text-gray-950">Bank-to-bank in literally seconds</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Stir deposits money instantly into your accounts. Never wait 3-5 business days again.
+                            </p>
+                        </div>
+                        <!-- Instant notification card -->
+                        <div class="bg-gradient-to-br from-stir-dark to-gray-900 text-white p-6 rounded-2xl shadow-xl max-w-sm mx-auto w-full">
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/6097ad4b15e2220a65060ae7_logo_stir_purple.svg" class="h-5 brightness-200" alt="">
+                                <span class="text-xs font-semibold text-gray-300">STIR PAYMENTS • JUST NOW</span>
+                            </div>
+                            <p class="text-lg font-bold">Transfer Complete</p>
+                            <p class="text-xs text-gray-300 mt-1">
+                                $2,310.00 deposited directly into your Chase Business Checking (••••4821).
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-gray-800 flex justify-between text-[11px] text-emerald-400 font-bold">
+                                <span>Zero Delay</span>
+                                <span>0% Transfer Fee</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4: Wherever you do business -->
+                    <div class="bg-white p-8 rounded-3xl border border-gray-200/80 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+                        <div class="space-y-3 mb-8">
+                            <h4 class="text-2xl font-extrabold text-gray-950">Wherever you do business</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                iMessage, Instagram, or even Discord — Pay meets you wherever you need it.
+                            </p>
+                        </div>
+                        <!-- iMessage bubble (from Figma asset dc9d7e2908053d47ed2140ed7d518cea57fa6345) -->
+                        <div class="bg-stir-gray-bg p-6 rounded-2xl border border-gray-200 max-w-sm mx-auto w-full space-y-3">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 pb-2 border-b border-gray-200">
+                                <span>Messages</span> • <span>Hari Anbarasu</span>
+                            </div>
+                            <div class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-gray-200 shadow-sm text-xs text-gray-800 max-w-[85%]">
+                                That is awesome! Let me know when it is done!
+                            </div>
+                            <div class="ml-auto bg-stir-purple text-white p-3.5 rounded-2xl rounded-tr-none shadow-sm max-w-[85%]">
+                                <div class="flex items-center justify-between text-xs mb-1">
+                                    <span class="font-bold">Stir Pay</span>
+                                    <span>$100.00</span>
+                                </div>
+                                <p class="text-[11px] opacity-90">Hari sent you $100 via Stir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teaser Banner -->
+                <div class="mt-12 bg-white rounded-2xl border border-gray-200 p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-stir-purple">Coming soon</span>
+                        <h4 class="text-xl font-bold text-gray-950 mt-1">Brand partnerships, advances & automated invoices</h4>
+                        <p class="text-xs text-gray-500 mt-1">We’re building the full financial operating system for the next generation of internet businesses.</p>
+                    </div>
+                    <a href="#get-started" class="px-6 py-3 bg-gray-900 hover:bg-black text-white text-xs font-bold rounded-full transition-colors whitespace-nowrap shadow">
+                        Come work with us &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 7. SECTION 3: SPLITS ==================== -->
+        <section id="splits" class="py-24 bg-white">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <!-- Section Badge & Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="inline-flex items-center gap-2 bg-stir-yellow-light text-amber-800 text-xs font-bold px-3.5 py-1.5 rounded-full mb-3">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60946011628d889c27441c5b_badge_splits.svg" alt="" class="w-3.5 h-3.5">
+                        <span>Splits</span>
+                    </div>
+                    <div class="text-amber-600 text-sm font-bold uppercase tracking-wider mb-2">If you want to go far, go together</div>
+                    <h3 class="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight">
+                        Get creative with others in just a Split.
+                    </h3>
+                    <p class="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                        Split the revenue on a video, a line of merch, or that latest and greatest podcast. The possibilities are endless when you share upside together.
+                    </p>
+                </div>
+
+                <!-- Splits Interactive Modal Mockup (from Figma asset 30bbab7d253980bb400408aeea7b9b535d9dfce9) -->
+                <div class="max-w-4xl mx-auto bg-stir-gray-bg border border-gray-200 rounded-3xl p-6 sm:p-10 shadow-2xl">
+                    <div class="text-center mb-10">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">New Split</span>
+                        <h4 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2">What would you like to split?</h4>
+                        <p class="text-xs text-gray-500 mt-1">Select a platform to connect and route automatic payouts.</p>
+                    </div>
+
+                    <!-- Platform Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                        <!-- YouTube -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-card-hover hover:border-stir-purple transition-all duration-200 cursor-pointer group">
+                            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center mb-4">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467bf0057027512af42d1_logo_youtube.svg" class="w-6 h-6" alt="YouTube">
+                            </div>
+                            <h5 class="font-extrabold text-gray-900 text-base group-hover:text-stir-purple transition-colors">YouTube</h5>
+                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                Split a single video or an entire channel. Pays out on the 21st of every month.
+                            </p>
+                        </div>
+
+                        <!-- Patreon -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-card-hover hover:border-stir-purple transition-all duration-200 cursor-pointer group">
+                            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center mb-4">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b8565285394eedaba1_logo_patreon.svg" class="w-6 h-6" alt="Patreon">
+                            </div>
+                            <h5 class="font-extrabold text-gray-900 text-base group-hover:text-stir-purple transition-colors">Patreon</h5>
+                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                Split a Patreon channel with anyone. Pays out whenever Patreon pays.
+                            </p>
+                        </div>
+
+                        <!-- Stripe -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-card-hover hover:border-stir-purple transition-all duration-200 cursor-pointer group">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center mb-4">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7d85d87bdb09e5110_logo_stripe.svg" class="w-6 h-6" alt="Stripe">
+                            </div>
+                            <h5 class="font-extrabold text-gray-900 text-base group-hover:text-stir-purple transition-colors">Stripe</h5>
+                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                Split anything that uses Stripe as a payout method. Pays out whenever Stripe pays.
+                            </p>
+                        </div>
+
+                        <!-- Shopify -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-card-hover hover:border-stir-purple transition-all duration-200 cursor-pointer group">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center mb-4">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7c8e9e492e3fc2284_logo_shopify.svg" class="w-6 h-6" alt="Shopify">
+                            </div>
+                            <h5 class="font-extrabold text-gray-900 text-base group-hover:text-stir-purple transition-colors">Shopify</h5>
+                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                Split a store or just a single item. Pays out whenever Shopify pays you.
+                            </p>
+                        </div>
+
+                        <!-- OnlyFans -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-card-hover hover:border-stir-purple transition-all duration-200 cursor-pointer group">
+                            <div class="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center mb-4">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b89552475915a35b07_logo_onlyfans.svg" class="w-6 h-6" alt="OnlyFans">
+                            </div>
+                            <h5 class="font-extrabold text-gray-900 text-base group-hover:text-stir-purple transition-colors">OnlyFans</h5>
+                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                Split an account with anyone. Pays out whenever OnlyFans pays.
+                            </p>
+                        </div>
+
+                        <!-- Anchor -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-card-hover hover:border-stir-purple transition-all duration-200 cursor-pointer group">
+                            <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609467b7fa7717800c2471ed_logo_anchor.svg" class="w-6 h-6" alt="Anchor">
+                            </div>
+                            <h5 class="font-extrabold text-gray-900 text-base group-hover:text-stir-purple transition-colors">Anchor</h5>
+                            <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                                Split a Podcast with anyone. Pays out whenever Anchor pays.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <button class="px-6 py-2.5 rounded-full border border-gray-300 hover:border-gray-900 text-xs font-bold text-gray-800 transition-colors">
+                            + Request a Platform
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 8. SECTION 4: COLLECTIVES ==================== -->
+        <section id="collectives" class="py-24 bg-stir-gray-bg border-t border-gray-100">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <!-- Section Badge & Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="inline-flex items-center gap-2 bg-stir-turquoise-light text-teal-800 text-xs font-bold px-3.5 py-1.5 rounded-full mb-3">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60945ba55138b42da8ad097c_icon_collectives.svg" alt="" class="w-3.5 h-3.5">
+                        <span>Collectives</span>
+                    </div>
+                    <div class="text-teal-600 text-sm font-bold uppercase tracking-wider mb-2">Co-opportunity Knocks</div>
+                    <h3 class="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight">
+                        Collectives: The future of collab culture
+                    </h3>
+                    <p class="mt-4 text-base text-gray-600">Spin up joint ventures in seconds. It's multiplayer mode for your business.</p>
+                </div>
+
+                <!-- Collectives Studio Card Preview -->
+                <div class="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-card max-w-5xl mx-auto">
+                    <div class="p-8 border-b border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-bold text-teal-600 uppercase tracking-widest">Shared Studio Dashboard</span>
+                            <h4 class="text-2xl font-black text-gray-950 mt-1">Collab Collective #04</h4>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-semibold text-gray-500">12 Members Active</span>
+                            <span class="px-4 py-1.5 bg-teal-50 text-teal-700 text-xs font-bold rounded-full">Shared Treasury</span>
+                        </div>
+                    </div>
+                    <div class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-5 bg-stir-gray-bg rounded-2xl border border-gray-100">
+                            <p class="text-xs text-gray-400 font-bold uppercase">Collective Treasury</p>
+                            <p class="text-3xl font-black text-gray-950 mt-2">$248,920.00</p>
+                            <p class="text-xs text-emerald-600 font-semibold mt-1">&uarr; +18.4% this month</p>
+                        </div>
+                        <div class="p-5 bg-stir-gray-bg rounded-2xl border border-gray-100">
+                            <p class="text-xs text-gray-400 font-bold uppercase">Active Projects</p>
+                            <p class="text-3xl font-black text-gray-950 mt-2">6 Releases</p>
+                            <p class="text-xs text-gray-500 mt-1">YouTube, Merch, Spotify</p>
+                        </div>
+                        <div class="p-5 bg-stir-gray-bg rounded-2xl border border-gray-100">
+                            <p class="text-xs text-gray-400 font-bold uppercase">Automated Payouts</p>
+                            <p class="text-3xl font-black text-gray-950 mt-2">100% On-time</p>
+                            <p class="text-xs text-teal-600 font-semibold mt-1">Zero manual invoicing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 9. SECTION 5: POSITIONS / TESTIMONIALS ==================== -->
+        <section id="positions" class="py-24 bg-white">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <div class="max-w-3xl mb-16">
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-950 tracking-tight leading-tight">
+                        We've got something for everyone: for maximum effectiveness, set up your entire team on Stir.
+                    </h3>
+                </div>
+
+                <!-- 3 Large Position Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Position 1: Creator -->
+                    <div class="bg-stir-gray-bg rounded-3xl overflow-hidden border border-gray-200 flex flex-col justify-between shadow-card hover:shadow-card-hover transition-all duration-300">
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="text-4xl font-black text-stir-purple">01</span>
+                                <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-white rounded-full text-gray-700 shadow-sm">
+                                    Creator
+                                </span>
+                            </div>
+                            <blockquote class="text-gray-800 text-sm sm:text-base leading-relaxed font-medium">
+                                “Stir is the secret weapon of the creator world. I have multiple 12+ person splits running on Stir right now. It's a game-changer for creators who strive to stay a cut above the rest.”
+                            </blockquote>
+                        </div>
+                        <div class="p-8 pt-0 flex items-center gap-4">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/6099e756483cff5690cff36c_Eric.jpg" 
+                                 alt="Eric Decker" 
+                                 class="w-14 h-14 rounded-full object-cover border-2 border-white shadow">
+                            <div>
+                                <h4 class="font-extrabold text-gray-950 text-base">Eric Decker</h4>
+                                <p class="text-xs text-stir-purple font-semibold">@airrack • YouTuber</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position 2: Manager -->
+                    <div class="bg-stir-gray-bg rounded-3xl overflow-hidden border border-gray-200 flex flex-col justify-between shadow-card hover:shadow-card-hover transition-all duration-300">
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="text-4xl font-black text-stir-purple">02</span>
+                                <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-white rounded-full text-gray-700 shadow-sm">
+                                    Manager
+                                </span>
+                            </div>
+                            <blockquote class="text-gray-800 text-sm sm:text-base leading-relaxed font-medium">
+                                “Without knowing about Stir, or what it could do we never would have been able to bring all of this collaborative work to life. It gives us full transparency across revenue.”
+                            </blockquote>
+                        </div>
+                        <div class="p-8 pt-0 flex items-center gap-4">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60c0ed201085c5252ec7626d_zack-img%20(1).jpg" 
+                                 alt="Zack Honarvar" 
+                                 class="w-14 h-14 rounded-full object-cover border-2 border-white shadow">
+                            <div>
+                                <h4 class="font-extrabold text-gray-950 text-base">Zack Honarvar</h4>
+                                <p class="text-xs text-stir-purple font-semibold">@ZackHonarvar • Talent Manager</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position 3: Editor -->
+                    <div class="bg-stir-gray-bg rounded-3xl overflow-hidden border border-gray-200 flex flex-col justify-between shadow-card hover:shadow-card-hover transition-all duration-300">
+                        <div class="p-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="text-4xl font-black text-stir-purple">03</span>
+                                <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-white rounded-full text-gray-700 shadow-sm">
+                                    Editor
+                                </span>
+                            </div>
+                            <blockquote class="text-gray-800 text-sm sm:text-base leading-relaxed font-medium">
+                                “Being able to see performance data, receive instantaneous bank payments, and never chase late invoices has completely changed how I collaborate with video creators.”
+                            </blockquote>
+                        </div>
+                        <div class="p-8 pt-0 flex items-center gap-4">
+                            <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609a35f7e04df5bc74cd2c10_Mack.jpeg" 
+                                 alt="Mack Hopkins" 
+                                 class="w-14 h-14 rounded-full object-cover border-2 border-white shadow">
+                            <div>
+                                <h4 class="font-extrabold text-gray-950 text-base">Mack Hopkins</h4>
+                                <p class="text-xs text-stir-purple font-semibold">Video Editor & Producer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 10. SECTION 6: SECURITY ==================== -->
+        <section id="security" class="py-24 bg-stir-gray-bg border-t border-gray-100">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <span class="inline-block bg-stir-orange-light text-stir-orange text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-3">
+                        Serious about security
+                    </span>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tight">
+                        Our top priority is keeping your data safe and secure.
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-white p-7 rounded-2xl border border-gray-200/80 shadow-sm text-center">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 text-stir-orange flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-base mb-2">We will never (ever) share your data</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">Your analytics, earnings, and audience information belong exclusively to you.</p>
+                    </div>
+
+                    <div class="bg-white p-7 rounded-2xl border border-gray-200/80 shadow-sm text-center">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 text-stir-orange flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-base mb-2">TLS (SSL) 256-bit encryption</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">Bank-grade security protocols protecting every transmission and API call.</p>
+                    </div>
+
+                    <div class="bg-white p-7 rounded-2xl border border-gray-200/80 shadow-sm text-center">
+                        <div class="w-12 h-12 rounded-full bg-orange-50 text-stir-orange flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-base mb-2">We’re a financial studio, not an MCN</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">We take zero cut of your intellectual property or rights. You stay 100% independent.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex items-center justify-center gap-8 opacity-70">
+                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/609564599cd17cbcac64e67b_logo_stripe-light-grey.svg" alt="Stripe" class="h-6">
+                    <span class="text-xs font-semibold text-gray-400">Plaid Partner Bank Integration</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 11. SECTION 7: CTA PILLARS ==================== -->
+        <section class="py-24 bg-white">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-stir-purple mb-2 block">Less Administration, More Imagination</span>
+                    <h3 class="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight">
+                        Get your business up and running on Stir
+                    </h3>
+                </div>
+
+                <!-- 4 Pillars Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Pillar 1: Home -->
+                    <div class="bg-stir-gray-bg p-8 rounded-3xl border border-gray-200/80 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-stir-purple-light flex items-center justify-center mb-6">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60945ba55138b4eae0ad097d_icon_home.svg" alt="" class="w-6 h-6">
+                            </div>
+                            <h4 class="text-xl font-extrabold text-gray-950 mb-2">Home</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Everything your creator business needs collected in one easy-to-use place.
+                            </p>
+                        </div>
+                        <a href="#home" class="mt-6 text-xs font-bold text-stir-purple hover:underline inline-flex items-center gap-1">
+                            Explore Home &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Pillar 2: Pay -->
+                    <div class="bg-stir-gray-bg p-8 rounded-3xl border border-gray-200/80 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-stir-mint-light flex items-center justify-center mb-6">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60945ba55138b47a7aad097f_icon_pay.svg" alt="" class="w-6 h-6">
+                            </div>
+                            <h4 class="text-xl font-extrabold text-gray-950 mb-2">Pay</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Free, fast, and professional. Modern payments for your modern business.
+                            </p>
+                        </div>
+                        <a href="#pay" class="mt-6 text-xs font-bold text-emerald-600 hover:underline inline-flex items-center gap-1">
+                            Explore Pay &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Pillar 3: Splits -->
+                    <div class="bg-stir-gray-bg p-8 rounded-3xl border border-gray-200/80 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-stir-yellow-light flex items-center justify-center mb-6">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60945ba55138b4c9b2ad097e_icon_splits.svg" alt="" class="w-6 h-6">
+                            </div>
+                            <h4 class="text-xl font-extrabold text-gray-950 mb-2">Splits</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Compensate collaborators with three clicks. Creativity is better with aligned incentives.
+                            </p>
+                        </div>
+                        <a href="#splits" class="mt-6 text-xs font-bold text-amber-700 hover:underline inline-flex items-center gap-1">
+                            Explore Splits &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Pillar 4: Collectives -->
+                    <div class="bg-stir-gray-bg p-8 rounded-3xl border border-gray-200/80 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-stir-turquoise-light flex items-center justify-center mb-6">
+                                <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60945ba55138b42da8ad097c_icon_collectives.svg" alt="" class="w-6 h-6">
+                            </div>
+                            <h4 class="text-xl font-extrabold text-gray-950 mb-2">Collectives</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Spin up joint ventures in seconds. It's multiplayer mode for your business.
+                            </p>
+                        </div>
+                        <a href="#collectives" class="mt-6 text-xs font-bold text-teal-600 hover:underline inline-flex items-center gap-1">
+                            Explore Collectives &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 12. SECTION 8: DROPS ==================== -->
+        <section id="drops" class="py-24 bg-stir-dark text-white overflow-hidden">
+            <div class="max-w-[1280px] mx-auto px-6 mb-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                    <div class="max-w-2xl">
+                        <span class="inline-block bg-white/10 text-stir-purple text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-4">
+                            Drops
+                        </span>
+                        <h3 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                            We're creators too
+                        </h3>
+                        <p class="mt-4 text-gray-400 text-sm sm:text-base leading-relaxed">
+                            Occasionally, we produce one-off projects that are in pursuit of our mission of enabling creators to run great businesses, own their content, and build a direct relationship with their audience.
+                        </p>
+                    </div>
+
+                    <!-- Drop Newsletter -->
+                    <div class="max-w-sm w-full">
+                        <p class="text-xs font-semibold text-gray-300 mb-2">Subscribe to hear about new drops</p>
+                        <form class="flex gap-2">
+                            <input type="email" placeholder="Enter your email" required class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-stir-purple">
+                            <button type="submit" class="px-5 py-2.5 bg-stir-purple hover:bg-stir-purple-hover text-white text-xs font-bold rounded-xl transition-colors">
+                                OK
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drops Cards Carousel / Row -->
+            <div class="max-w-[1280px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+                <!-- Drop 1: Goodbye Mixer -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-stir-purple transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-44 overflow-hidden bg-gray-800">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60c0f03c5168d760f19a469e_goodbye-mixer.jpg" 
+                             alt="Goodbye Mixer" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-extrabold text-base text-white group-hover:text-stir-purple transition-colors">Goodbye Mixer</h4>
+                        <p class="text-xs text-gray-400 mt-1">Connect with your Mixer followers</p>
+                    </div>
+                </div>
+
+                <!-- Drop 2: Presubscribe -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-stir-purple transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-44 overflow-hidden bg-gray-800">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60c0f03b9b7269a15141c1d9_presubscribe.jpg" 
+                             alt="Presubscribe" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-extrabold text-base text-white group-hover:text-stir-purple transition-colors">Presubscribe</h4>
+                        <p class="text-xs text-gray-400 mt-1">Support creators before they're independent</p>
+                    </div>
+                </div>
+
+                <!-- Drop 3: OnlyTweets -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-stir-purple transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-44 overflow-hidden bg-gray-800">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60c0f03a951de16049fa3904_only-tweets.jpg" 
+                             alt="OnlyTweets" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-extrabold text-base text-white group-hover:text-stir-purple transition-colors">OnlyTweets</h4>
+                        <p class="text-xs text-gray-400 mt-1">Support creators directly on Twitter</p>
+                    </div>
+                </div>
+
+                <!-- Drop 4: MerchWith -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-stir-purple transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-44 overflow-hidden bg-gray-800">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60c0f03b1085c53f6bc7723a_merch-with.jpg" 
+                             alt="MerchWith" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-extrabold text-base text-white group-hover:text-stir-purple transition-colors">MerchWith</h4>
+                        <p class="text-xs text-gray-400 mt-1">Merch collabs by creators who never met</p>
+                    </div>
+                </div>
+
+                <!-- Drop 5: CollabParty -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-stir-purple transition-all duration-300 flex flex-col justify-between">
+                    <div class="h-44 overflow-hidden bg-gray-800">
+                        <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60c0f03b70681204194d9acb_collab-party.jpg" 
+                             alt="CollabParty" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-extrabold text-base text-white group-hover:text-stir-purple transition-colors">CollabParty</h4>
+                        <p class="text-xs text-gray-400 mt-1">Where the creator economy meets</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== 13. FOOTER ==================== -->
+    <footer class="bg-stir-dark text-white pt-20 pb-12 border-t border-white/10">
+        <div class="max-w-[1280px] mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 pb-16 border-b border-white/10">
+                <!-- Large Statement -->
+                <div class="max-w-xl">
+                    <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                        Cheers to a more imaginative world.
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-2">Subscribe for updates on features, stories, and drops.</p>
+                </div>
+
+                <!-- Newsletter Input -->
+                <div class="max-w-md w-full">
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Subscribe for updates" required class="w-full px-5 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-stir-purple">
+                        <button type="submit" class="px-6 py-3 bg-stir-purple hover:bg-stir-purple-hover text-white text-xs font-bold rounded-full transition-colors whitespace-nowrap shadow-md">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Row -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-gray-400">
+                <div class="flex items-center gap-4">
+                    <img src="https://assets-global.website-files.com/60945ba55138b4f2adad0961/60945ba55138b45840ad0986_logo_stir-dashboard.svg" alt="Stir" class="h-6">
+                    <span>&copy; 2026 Stir, Inc. All rights reserved.</span>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-white transition-colors">Twitter</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive script for mobile menu -->
+    <script>
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
